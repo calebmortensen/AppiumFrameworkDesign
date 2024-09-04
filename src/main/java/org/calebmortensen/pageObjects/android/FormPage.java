@@ -12,6 +12,7 @@ public class FormPage extends AndroidActions {
 	// LOCATOR & ACTIONS
 	AndroidDriver driver;
 
+	//Constructor
 	public FormPage(AndroidDriver driver) {
 		super(driver);
 		this.driver = driver;

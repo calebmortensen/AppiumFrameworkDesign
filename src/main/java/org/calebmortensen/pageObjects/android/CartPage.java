@@ -12,6 +12,7 @@ public class CartPage extends AndroidActions {
 
 	AndroidDriver driver;
 
+	//Constructor
 	public CartPage(AndroidDriver driver) {
 		super(driver);
 		this.driver = driver;
