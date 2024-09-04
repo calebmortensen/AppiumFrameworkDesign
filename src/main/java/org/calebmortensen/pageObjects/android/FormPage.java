@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
@@ -34,6 +35,15 @@ public class FormPage extends AndroidActions {
 	@AndroidFindBy(id = "com.androidsample.generalstore:id/btnLetsShop")
 	private WebElement shopButton;
 
+	
+	public void setActivity() {
+		
+		Activity activity = new Activity("com.androidsample.generalstore", "com.androidsample.generalstore.MainActivity");
+		driver.startActivity(activity);
+	}
+	
+	
+	
 	public void setNameField(String name) {
 		nameField.sendKeys(name);
 		driver.hideKeyboard();
