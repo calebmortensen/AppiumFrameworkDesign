@@ -39,9 +39,9 @@ public class AndroidBaseSetup extends AppiumUtils{
 		options.setDeviceName(prop.getProperty("AndroidDevice")); // emulator
 		
 		options.setChromedriverExecutable(
-				"C:\\Users\\caleb\\EWS\\AppiumFrameworkDesign\\src\\main\\java\\org\\calebmortensen\\resources\\chromedriver.exe");
+				System.getProperty("user.dir")+ "\\src\\main\\java\\org\\calebmortensen\\resources\\chromedriver.exe");
 		options.setApp(
-				"C:\\Users\\caleb\\EWS\\AppiumFrameworkDesign\\src\\main\\java\\org\\calebmortensen\\resources\\General-Store.apk");
+				System.getProperty("user.dir")+ "\\src\\main\\java\\org\\calebmortensen\\resources\\General-Store.apk");
 
 		driver = new AndroidDriver(service.getUrl(), options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
