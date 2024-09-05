@@ -24,7 +24,7 @@ import io.appium.java_client.android.Activity;
 public class GeneralStore extends AndroidBaseSetup {
 
 	
-	@BeforeMethod
+	@BeforeMethod (alwaysRun=true)
 	public void preSetup()
 	{
 		formPage.setActivity();
@@ -36,7 +36,7 @@ public class GeneralStore extends AndroidBaseSetup {
 	
 	
 	
-	@Test(dataProvider= "getData")
+	@Test(dataProvider= "getData", groups= {"Smoke"})
 	public void PopulateForm(HashMap<String, String> input) throws InterruptedException {
 		
 		//

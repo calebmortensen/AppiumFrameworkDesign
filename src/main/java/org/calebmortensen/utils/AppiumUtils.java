@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -58,5 +59,14 @@ public class AppiumUtils {
 		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		 wait.until(ExpectedConditions.attributeContains(element, "text", "Cart"));
 		
+	}
+	
+	public String getScreenshotPath(String testCaseName, AppiumDriver driver) throws IOException {
+		File source = driver.getScreenshotAs(OutputType.FILE);
+		String destinationFile = System.getProperty("user.dir")+"//screenshots"+testCaseName+".png";
+		FileUtils.copyFile(source, new File(destinationFile));
+		return destinationFile;
+		//1. capture and place in folder
+		//2. extent report must pick file and attach to report
 	}
 }

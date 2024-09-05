@@ -1,6 +1,7 @@
 package org.calebmortensen.TestUtils;
 
 import org.calebmortensen.ExtentReports.ExtentReporterNG;
+import org.calebmortensen.utils.AppiumUtils;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -9,9 +10,12 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class Listeners implements ITestListener {
+import io.appium.java_client.AppiumDriver;
+
+public class Listeners extends AppiumUtils implements ITestListener {
 	ExtentTest test;
 	ExtentReports extent = ExtentReporterNG.getReporterObject();
+	AppiumDriver driver;
 
 	@Override
 	public void onTestStart(ITestResult result) {
@@ -29,6 +33,20 @@ public class Listeners implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		// ScreenShot Code
 		test.fail(result.getThrowable());
+		
+		try {
+		driver = (AppiumDriver) result.getTestClass().getRealClass().getField("driver")
+				.get(result.getInstance());
+		}catch(Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		try {
+			test.addScreenCaptureFromPath(getScreenshotPath(result.getMethod().getMethodName(), driver), result.getMethod().getMethodName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

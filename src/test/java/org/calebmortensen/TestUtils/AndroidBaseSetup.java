@@ -23,7 +23,7 @@ public class AndroidBaseSetup extends AppiumUtils{
 	public AppiumDriverLocalService service;
 	public FormPage formPage;
 
-	@BeforeClass
+	@BeforeClass(alwaysRun=true)
 	public void ConfigureAppium() throws URISyntaxException, IOException {
 
 		Properties prop = new Properties();
@@ -49,8 +49,8 @@ public class AndroidBaseSetup extends AppiumUtils{
 
 	}
 
-	@AfterMethod
-	@AfterClass
+	
+	@AfterClass(alwaysRun=true)
 	public void tearDown() {
 		driver.quit();
 		service.stop();
