@@ -19,8 +19,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 public class AppiumUtils {
+	
+	public AppiumDriverLocalService service;
 
 	public Double getFormattedAmount(String amount) {
 		Double price = Double.parseDouble(amount.substring(1));
@@ -29,17 +33,24 @@ public class AppiumUtils {
 	
 	
 	public List<HashMap<String, String>> getJsonData(String jsonFilePath) throws IOException{
-		//System.getProperty("user.dir")+"\\src\\test\\java\\org\\calebmortensen\\testdata\\GeneralStore.json"
-		//Convert json file to json string
+		//Convert json file to json string  commons-io
 		String jsonContent = FileUtils.readFileToString(new File(jsonFilePath), StandardCharsets.UTF_8);
-		
+		//jackson-databind
 		ObjectMapper mapper = new ObjectMapper();
 		List<HashMap<String, String>> data = mapper.readValue(jsonContent, new TypeReference<List<HashMap<String, String>>>(){
 	});
 		
 		return data;
 	}
-	
+	// code to start automation instead of running appium from command line
+	public AppiumDriverLocalService startAppiumServer(String ipAddress, int port) {
+		service = new AppiumServiceBuilder()
+				.withAppiumJS(
+						new File("C:\\Users\\caleb\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+				.withIPAddress(ipAddress).usingPort(port).build();
+		service.start();
+		return service;
+	}
 	
 	
 	public void waitForElementToAppear(WebElement element, AppiumDriver driver) {

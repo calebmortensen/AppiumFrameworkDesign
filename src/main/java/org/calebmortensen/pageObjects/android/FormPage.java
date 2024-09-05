@@ -39,7 +39,7 @@ public class FormPage extends AndroidActions {
 	public void setActivity() {
 		
 		Activity activity = new Activity("com.androidsample.generalstore", "com.androidsample.generalstore.MainActivity");
-		driver.startActivity(activity);
+		//driver.startActivity(activity);
 	}
 	
 	

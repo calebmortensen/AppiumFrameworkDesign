@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import org.calebmortensen.TestUtils.AndroidBaseSetup;
 import org.calebmortensen.pageObjects.android.CartPage;
 import org.calebmortensen.pageObjects.android.FormPage;
 import org.calebmortensen.pageObjects.android.ProductCatalog;
@@ -19,7 +20,7 @@ import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.android.Activity;
 
-public class GeneralStore extends BaseSetup {
+public class GeneralStore extends AndroidBaseSetup {
 
 	
 	@BeforeMethod
