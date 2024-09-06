@@ -49,3 +49,7 @@ Settings > Developer > Enable UI Automation
 Build the app in xcode for real device
 Then it generates .app file
 Pass this path into Desired Capabilities
+
+NOTE:
+
+MAVEN -   navigate to project root from CMD and:  mvn test -PRegression   (You set this type of test in POM.xml
