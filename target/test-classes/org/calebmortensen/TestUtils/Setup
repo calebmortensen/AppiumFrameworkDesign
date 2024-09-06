@@ -52,4 +52,18 @@ Pass this path into Desired Capabilities
 
 NOTE:
 
-MAVEN -   navigate to project root from CMD and:  mvn test -PRegression   (You set this type of test in POM.xml
+MAVEN -   navigate to project root from CMD and:  mvn test -PRegression
+
+
+Appium Framework with Cloud Integration:
+BrowserStack
+get name & password and paste in yml
+
+Upload APK and get link
+
+Install BrowserStack plugin in to Eclipse
+Convert project to BrowserStack
+browserstack.yml is created
+
+run mvn test
+can run local by: BROWSERSTACK_AUTOMATION=false mvn test -PRegression
