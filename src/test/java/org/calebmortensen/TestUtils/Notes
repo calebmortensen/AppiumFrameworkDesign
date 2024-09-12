@@ -1,0 +1,15 @@
+11/12/2024
+How to open a Page aka Activity at a certain location instead of the Home/Landing page of the APP:
+Activity class wants package & activity (from open declaration)
+Navigate to page of app on android phone, launch adb from console and execute:
+adb shell dumpsys window | find "mCurrentFocus"
+Result: io.appium.android.apis/io.appium.android.apis.preference.PreferenceDependencies
+Result: Package/Activity
+
+PageFactory, while a common Page Object implementation in Java, is not recommended by Selenium contributors
+ due to various limitations. It does not store the result when the driver locates the element,
+ causing it to relocate the element for each operation, leading to inefficiency and performance issues.Nov 28, 2023
+ 
+ If you can't use Appium Inspector to get the info of a TOAST Message, use:
+ String toastMessage = driver.findElement(By.xpath("android.widget.toast)[1]")).getAttribute("name");
+ Assert.assertEquals(toastMessage, "Please enter your name");

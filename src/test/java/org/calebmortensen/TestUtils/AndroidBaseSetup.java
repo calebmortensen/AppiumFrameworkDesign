@@ -38,6 +38,7 @@ public class AndroidBaseSetup extends AppiumUtils{
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setDeviceName(prop.getProperty("AndroidDevice")); // emulator
 		
+		//I think i can install the Chromium driver in Appium instead
 		options.setChromedriverExecutable(
 				System.getProperty("user.dir")+ "\\src\\main\\java\\org\\calebmortensen\\resources\\chromedriver.exe");
 		options.setApp(
