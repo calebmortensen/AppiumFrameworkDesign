@@ -11,11 +11,11 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class FormPage extends AndroidActions {
 	// LOCATOR & ACTIONS
-	AndroidDriver driver;
+	AndroidDriver driver; //Null initially but has access to entire class, and is linked via constructor then parent
 
 	//Constructor
 	public FormPage(AndroidDriver driver) {
-		super(driver);
+		super(driver); 
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}

@@ -13,3 +13,22 @@ PageFactory, while a common Page Object implementation in Java, is not recommend
  If you can't use Appium Inspector to get the info of a TOAST Message, use:
  String toastMessage = driver.findElement(By.xpath("android.widget.toast)[1]")).getAttribute("name");
  Assert.assertEquals(toastMessage, "Please enter your name");
+ 
+ 11/14/2024
+ Native vs Hybrid app (W/Browser) - Need to change Context
+ When the browser from the app is open, use:
+ driver.getContextHandles();
+ driver.context("Webview");
+ Set<String> contexts = driver.get.ContextHandles();
+ for(String contextName : contexts)
+ {
+ System.out.println(contextName);
+ }
+ // This outputs NATIVE & BROWSER data, so copy from console
+ driver.context("WEBVIEW_com.androidsample.generalstore");
+ 
+ Sent a question to Udemy - can you replace the chromium driver exe with 'appium driver install chromium'?
+ 
+ So the better way of locating the element, Priority wise should be in the list
+ [id, name, linkText, partialLinkText, tagName, className, cssSelector, xpath]
+ 
