@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="org.calebmortensen.GeneralStore">
+      <class name="org.calebmortensen.ExtentReports.ExtentReportDemo">
         <methods>
-          <include name="tearDown"/>
-          <include name="ConfigureAppium"/>
-          <include name="PopulateForm"/>
+          <include name="config"/>
+          <include name="initialDemo"/>
         </methods>
-      </class> <!-- org.calebmortensen.GeneralStore -->
+      </class> <!-- org.calebmortensen.ExtentReports.ExtentReportDemo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

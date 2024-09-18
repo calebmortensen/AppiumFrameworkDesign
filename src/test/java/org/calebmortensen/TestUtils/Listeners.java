@@ -31,7 +31,7 @@ public class Listeners extends AppiumUtils implements ITestListener {
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		// ScreenShot Code
+		// ScreenShot Code - in AppiumUtils
 		test.fail(result.getThrowable());
 		
 		try {
@@ -44,19 +44,18 @@ public class Listeners extends AppiumUtils implements ITestListener {
 		try {
 			test.addScreenCaptureFromPath(getScreenshotPath(result.getMethod().getMethodName(), driver), result.getMethod().getMethodName());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void onFinish(ITestContext context) {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

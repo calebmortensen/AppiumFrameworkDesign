@@ -1,5 +1,6 @@
 package org.calebmortensen.ExtentReports;
 
+import org.calebmortensen.utils.AppiumUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -13,11 +14,14 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class ExtentReportDemo {
+import io.appium.java_client.AppiumDriver;
+
+public class ExtentReportDemo extends AppiumUtils {
 
 	
-	WebDriver driver;
+	public WebDriver driver;
 	ExtentReports extent;
+
 	
 	@BeforeTest
 	public void config() {
@@ -32,7 +36,7 @@ public class ExtentReportDemo {
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 		extent.setSystemInfo("Tester", "Caleb Mortensen");
-		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\java\\org\\calebmortensen\\resources\\chromedriver.exe");
 		
 	}
 	
@@ -40,22 +44,35 @@ public class ExtentReportDemo {
 	
 	
 	@Test
-	public void initialDemo() {
+	public void initialDemo() throws InterruptedException {
 		
 		ExtentTest test = extent.createTest("Initial Demo");
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\java\\org\\calebmortensen\\resources\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("https://rahushettyacademy.com");
-		System.out.println(driver.getTitle());
-		//test.addScreenCaptureFromBase64String();
-		driver.close();
-		//test.fail("Results do not match");
 		
+		driver = new ChromeDriver();
+		driver.get("https://www.cnn.com/");
+		//Thread.sleep(5000);
+		System.out.println(driver.getTitle());
+		driver.close();
 		extent.flush();
 		
 		
 	}
 	
+	@Test
+	public void initialfailOnPurpose() {
+		
+		ExtentTest test = extent.createTest("Initial Fail");
+		
+		driver = new ChromeDriver();
+		driver.get("https://FAILonPURPOSEforTEST.com");
+		//System.out.println(driver.getTitle());
+		//test.addScreenCaptureFromBase64String(null);
+		test.fail("Results do not match");
+		driver.close();
+		extent.flush();
+		
+		
+	}
 	
 	
 }
